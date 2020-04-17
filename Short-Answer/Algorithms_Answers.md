@@ -52,12 +52,13 @@ f = floor # -n because as the floor number increases, so does the likelihood of 
 
 3. Write out your proposed algorithm in plain English or pseudocode AND give the runtime complexity of your solution.
 
-
+```
 So here's my interpretation of what needs to be done.
 
 A strategy or function needs to be developed to determine the value of f that causes eggs to break
 
 - In reality, the only chance of an egg not breaking is if f=0.  Any higher and the eggs would definitely break. 
+
 
 def is_eggs_broken(n):
     n = 10
@@ -69,7 +70,9 @@ def is_eggs_broken(n):
 
     return f
 
-           
+
+ ```     
+ - No matter which way you look at this, any floor number bigger than zero would cause the eggs to break.  The size of the building plays no part in this either.  This problem has a time complexity of 0(1) because no matter what the floor number is after 0, the answer remains constant
 
 
 
