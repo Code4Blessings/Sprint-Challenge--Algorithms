@@ -60,15 +60,13 @@ A strategy or function needs to be developed to determine the value of f that ca
 - In reality, the only chance of an egg not breaking is if f=0.  Any higher and the eggs would definitely break. 
 
 
-def is_eggs_broken(n):
+def is_eggs_broken(n, f):
     n = 10
     for f in range(10):
         if f = 0:
-            return "eggs not broken"
+            return false
         elif f > 0:
-            return "eggs broken"
-
-    return f
+            return true
 
 
  ```     
