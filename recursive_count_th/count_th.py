@@ -12,8 +12,7 @@ def count_th(word):
     #How do we account for the tested word that has "th" in the middle?
     #Slice?
     if len(word) > 2:
-        return count_th(word[1: len(word)]) + count 
-    
+        return count_th(word[1: len(word)]) + count
     else:
         return count
     

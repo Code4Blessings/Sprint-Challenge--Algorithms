@@ -2,75 +2,63 @@
 
 ## Exercise I
 
-a) Answer: 0(n^3)
+a) Answer: 0(n)
 
-- The time complexity is 0(n^3) because on line 10 you have n^3.  On line 11 you have n^2.  The actual result is O(n^3 + n^2).  If you were to simplify this, the final result would be 0(n^3) because when you put n^3 and n^2 together, the worst case would always be 0(n^3).
+```
 
+- The time complexity is 0(n) because (a) grows in proportion to n as long as (a) is less than n^3.
 
-b) Answer: 0(n)
+```
 
-- In this problem you have 4 operations and 2 constants.  This gives you a time complexity of 0(4n + 2).  Simplified, this would be 0(n).
+b) 0(log n)
+In this case, the first for loop says as long as the index is in range of n, j stays proportionate at 1. But even though the while loop is nested in the for loop, which would imply a time complexity of n^2, it isn't executing the same operation as it's parent.  Under the while loop, j is growing twice as fast as it's parent.  That would make it 0(log n)
+ ```
+  sum = 0  1
+    for i in range(n)  -n
+      j = 1   1
+      while j < n:  
+        j *= 2    another way to say this is j = j * 2 (statement says as long as )
+        sum += 1  -n
+```
 
 
 c) Answer: 0(n)
 
-- Like 26 & 27 are both constants.  However line 28 bunnyEars increase with the amount of bunnies which is n.  This leads to 0(2 + n), smplified, 0(n)
+- Line 26 & 27 are both constants.  However line 28 bunnyEars increase with the amount of bunnies which is n.  This leads to 0(2 + n), simplified, 0(n)
 
 ## Exercise II
+Suppose that you have an n-story building and plenty of eggs. Suppose also that an egg gets broken if it is thrown off floor f or higher, and doesn't get broken if dropped off a floor less than floor f. Devise a strategy to determine the value of f such that the number of dropped + broken eggs is minimized.
 
-1. Suppose that you have an n-story building and plenty of eggs. Suppose also that an egg gets broken if it is thrown off floor f or higher, and doesn't get broken if dropped off a floor less than floor f. 
-
-```
-- Ok so we have x amount of eggs
-- What is higher than floor f?  Does higher mean "g", "h", "i"... 
-
-Or
-
-- Could f be a variable? 
-
-- "Suppose also that an egg gets broken if it is thrown off floor f or higher, and doesn't get broken if dropped off a floor less than floor f." --This statement implies a conditional
-
-If x > f return "eggs broken"
-elif x < f return "no eggs broken"
-
-- This statement also shows that a loop is needed because we're looping over each floor # (f)
-
-n = How many stories are in the building  -constant because this is not in proportion to the number of eggs broken
-
-f = floor # -n because as the floor number increases, so does the likelihood of eggs getting broken. 
+Write out your proposed algorithm in plain English or pseudocode AND give the runtime complexity of your solution.
 
 ```
 
-2. Devise a strategy to determine the value of f such that the number of dropped + broken eggs is minimized.
+The answer is to complete a binary search through the building.
 
-```
-- Ok now this part of the instruction states, "...the value of f" Therefore f is a variable.
+ In researching the proper strategy to determine the value of f. First I realized that n-story building had no bearing on whether or not the eggs get broken. We are simply searching for which floor would cause the eggs to break.  Now normally we would go through each floor and drop an egg to see if it breaks.  That would take way too much time.  However, if we did a binary search through the building, we could eliminate searching through half of the building that would likely break the egg.  If we go halfway, and the egg doesn't break, we can eliminate the bottom half as we know the bottom half wouldn't cause breakage.  Then we go to the midpoint of the upper half of the building and if the egg breaks there, then we know the right floor is no higher than the midpoint here. So that eliminates having to complete the search through the rest of the floors in the top level of the building.  This process is to be repeated until there are no more options for (f)
 
-- Here lies the question:  How do we determine which value of (f) causes eggs to break in an n-story building?  Does the value of f change with the value of n?  --No because in each case, n is constant.
+ The algorithm in this case would be 
+ Example: 
+ Suppose n = 10
+ f= [ 1,2,3,4,5,6,7,8,9,10]
 
-```
+We start at floor 5 // The egg doesn't break
+- This eliminates the bottom 4 floors.
 
-3. Write out your proposed algorithm in plain English or pseudocode AND give the runtime complexity of your solution.
+Now we have
+f= [6,7,8,9,10]
+Start at floor 8// The egg breaks
+- Now we know the starting point of where the eggs break.  If f > 8, the eggs will break
 
-```
-So here's my interpretation of what needs to be done.
+But to make certain that is the right floor, we now only have to test 2 floors which is 6 & 7.
 
-A strategy or function needs to be developed to determine the value of f that causes eggs to break
-
-- In reality, the only chance of an egg not breaking is if f=0.  Any higher and the eggs would definitely break. 
-
-
-def is_eggs_broken(n, f):
-    n = 10
-    for f in range(10):
-        if f = 0:
-            return false
-        elif f > 0:
-            return true
+The time complexity here would be 0(log n)
+ 
 
 
- ```     
- - No matter which way you look at this, any floor number bigger than zero would cause the eggs to break.  The size of the building plays no part in this either.  This problem has a time complexity of 0(1) because no matter what the floor number is after 0, the answer remains constant
+
+
+
 
 
 
