@@ -18,4 +18,59 @@ c) Answer: 0(n)
 
 ## Exercise II
 
+1. Suppose that you have an n-story building and plenty of eggs. Suppose also that an egg gets broken if it is thrown off floor f or higher, and doesn't get broken if dropped off a floor less than floor f. 
+
+```
+- Ok so we have x amount of eggs
+- What is higher than floor f?  Does higher mean "g", "h", "i"... 
+
+Or
+
+- Could f be a variable? 
+
+- "Suppose also that an egg gets broken if it is thrown off floor f or higher, and doesn't get broken if dropped off a floor less than floor f." --This statement implies a conditional
+
+If x > f return "eggs broken"
+elif x < f return "no eggs broken"
+
+- This statement also shows that a loop is needed because we're looping over each floor # (f)
+
+n = How many stories are in the building  -constant because this is not in proportion to the number of eggs broken
+
+f = floor # -n because as the floor number increases, so does the likelihood of eggs getting broken. 
+
+```
+
+2. Devise a strategy to determine the value of f such that the number of dropped + broken eggs is minimized.
+
+```
+- Ok now this part of the instruction states, "...the value of f" Therefore f is a variable.
+
+- Here lies the question:  How do we determine which value of (f) causes eggs to break in an n-story building?  Does the value of f change with the value of n?  --No because in each case, n is constant.
+
+```
+
+3. Write out your proposed algorithm in plain English or pseudocode AND give the runtime complexity of your solution.
+
+
+So here's my interpretation of what needs to be done.
+
+A strategy or function needs to be developed to determine the value of f that causes eggs to break
+
+- In reality, the only chance of an egg not breaking is if f=0.  Any higher and the eggs would definitely break. 
+
+def is_eggs_broken(n):
+    n = 10
+    for f in range(10):
+        if f = 0:
+            return "eggs not broken"
+        elif f > 0:
+            return "eggs broken"
+
+    return f
+
+           
+
+
+
 
