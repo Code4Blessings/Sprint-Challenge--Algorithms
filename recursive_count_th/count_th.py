@@ -10,9 +10,9 @@ def count_th(word):
     if word.startswith("th"):
         count = 1  # Count "th" as 1 instance
     #How do we account for the tested word that has "th" in the middle?
-    #Identify the index of where 
+    #Slice?
     if len(word) > 2:
-        return count_th(word[1: len(word)]) + count
+        return count_th(word[1: len(word)]) + count 
     
     else:
         return count
@@ -20,6 +20,7 @@ def count_th(word):
     
 
 #"word" is just a parameter.
+#Can't use a loop
 #What is the base case?  How do we get the function to stop counting?
 #Stop after word.lenth is reached
 #Look at what is being tested.  Where are instances of "th" located?
