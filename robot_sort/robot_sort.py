@@ -96,10 +96,51 @@ class SortingRobot:
         """
         Sort the robot's list.
         """
-        # Fill this out
-        pass
 
+    
+        #Describe Bubble Sort
+        ##Bubble sort works by comparing each element to it's neigbor
+        #If the second index is smaller than the first index, swap the two indices
+        #If you reach the end of the array, start again
 
+        #Process - Move right to the second index, pick up card, COMPARE.  If second index is greater than the first index, swap. If second index is less than the first, do nothing
+
+        #Continue process and when end of the array is reached, start again 
+        #Use on light to move the robot.  Use off light to stop the robot
+
+        #When robot's light is on, the list is unsorted. 
+        self.set_light_on()
+
+        while self.light_is_on():
+            self.set_light_off()
+
+            # Pick up card
+            self.swap_item()
+            # While robot is moving right, compare items
+            while(self.can_move_right()):
+                self.move_right()
+                #Compare the held item in front of the robot. If the held item's value is greater, return 1 and swap.
+                if self.compare_item() == 1:
+                    self.swap_item()
+                    #List is still unsorted, turn light back on all the way to the end, move left, and then swap
+                    self.set_light_on()
+
+            while(self.can_move_left()):
+                self.move_left()
+                if self.compare_item() == None:
+                    self.swap_item()
+                    break #Exit Loop
+
+            # Move one position over before the next loop starts again.
+            self.move_right()
+
+        # Swap the last card
+        while(self.can_move_right()):
+            self.move_right()
+        self.swap_item()
+            
+        
+        
 if __name__ == "__main__":
     # Test our your implementation from the command line
     # with `python robot_sort.py`
