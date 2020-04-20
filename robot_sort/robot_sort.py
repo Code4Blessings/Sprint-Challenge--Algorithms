@@ -107,7 +107,8 @@ class SortingRobot:
 
         #Continue process and when end of the array is reached, start again 
         #Use on light to move the robot.  Use off light to stop the robot
-        
+
+        #When robot's light is on, the list is unsorted. 
         self.set_light_on()
 
         while self.light_is_on():
@@ -115,27 +116,30 @@ class SortingRobot:
 
             # Pick up card
             self.swap_item()
-            # Move right and compare as it goes.
+            # While robot is moving right, compare items
             while(self.can_move_right()):
                 self.move_right()
+                #Compare the held item in front of the robot. If the held item's value is greater, return 1 and swap.
                 if self.compare_item() == 1:
                     self.swap_item()
+                    #List is still unsorted, turn light back on all the way to the end, move left, and then swap
                     self.set_light_on()
 
-            # Now, move left in the list to put the holding card in the hole.
             while(self.can_move_left()):
                 self.move_left()
                 if self.compare_item() == None:
                     self.swap_item()
-                    break
+                    break #Exit Loop
 
-            # Move one position over before the loop starts again.
+            # Move one position over before the next loop starts again.
             self.move_right()
 
-        # Stick the last card back in place
+        # Swap the last card
         while(self.can_move_right()):
             self.move_right()
         self.swap_item()
+            
+        
         
 if __name__ == "__main__":
     # Test our your implementation from the command line
